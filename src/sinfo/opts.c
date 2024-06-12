@@ -400,7 +400,10 @@ extern void parse_command_line(int argc, char **argv)
 		} else if ((env_val = getenv ("SINFO_FORMAT"))) {
 			params.format = xstrdup(env_val);
 
-		} else if (params.fed) {
+		} else if ((env_val = getenv ("SINFO_FORMAT2"))) {
+		        long_form = true;
+			params.format = xstrdup(env_val);
+                } else if (params.fed) {
 			long_form = true;
 			params.part_field_flag = true;	/* compute size later */
 			params.format = params.long_output ?
